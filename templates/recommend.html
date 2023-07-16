@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Recommender System</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.typekit.net/xxxxxxx.css"> <!-- Replace with your Typewolf font CSS link -->
+    <style>
+        body {
+            background-color: #f9ece6;
+            font-family: 'TypewolfFont', sans-serif;
+            font-size: 16px;
+            color: #333333;
+        }
+        .navbar {
+            background-color: #f4c2b7;
+            border-color: #e89f93;
+        }
+        .navbar-brand {
+            font-family: 'TypewolfFont', sans-serif;
+            font-size: 24px;
+            color: #333333;
+        }
+        .nav li a {
+            font-family: 'TypewolfFont', sans-serif;
+            font-size: 16px;
+            color: #333333;
+        }
+        .nav li a:hover {
+            color: #666666;
+        }
+        h1 {
+            font-family: 'TypewolfFont', sans-serif;
+            font-size: 50px;
+            color: #333333;
+            margin-top: 30px;
+        }
+        .card-body {
+            text-align: center;
+        }
+        .card-body p, .card-body h4 {
+            font-family: 'TypewolfFont', sans-serif;
+            font-size: 20px;
+            color: #333333;
+            margin: 0;
+        }
+        .form-control {
+            font-family: 'TypewolfFont', sans-serif;
+            font-size: 16px;
+            color: #333333;
+        }
+        .btn {
+            font-family: 'TypewolfFont', sans-serif;
+            font-size: 16px;
+            color: #ffffff;
+            background-color: #f4796b;
+            border-color: #e36d60;
+        }
+        .btn:hover {
+            background-color: #e36d60;
+            border-color: #d16055;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a class="navbar-brand">My Book Recommender</a>
+        <ul class="nav navbar-nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="/recommend">Recommend</a></li>
+            <li><a>Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Recommend Books</h1>
+                <form action="/recommend_books" method="post">
+                    <input name="user_input" type="text" class="form-control"><br>
+                    <input type="submit" class="btn btn-lg">
+                </form>
+            </div>
+
+            {% if data %}
+                {% for i in data %}
+                    <div class="col-md-3" style="margin-top: 50px">
+                        <div class="card">
+                            <div class="card-body">
+                                <img class="card-img-top" src="{{i[2]}}">
+                                <p>{{i[0]}}</p>
+                                <h4>{{i[1]}}</h4>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+
+</body>
+</html>
